@@ -5,7 +5,7 @@ $(document).ready(function(){
         try {
             return decodeURIComponent(window.location.hash.substr(1));
         } catch(e) {
-            return {};
+            return "";
         }
     }
     
