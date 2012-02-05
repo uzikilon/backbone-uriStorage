@@ -39,7 +39,7 @@ $(document).ready(function(){
         equals(decodeHash(), '{"test":{"id":"test","foo":"bar","bool":false,"num":17.2}}', "window hash created");
     });
     
-    test("Test DESTROY", function() {
+    test("Test DELETE", function() {
         var state = new State({id: "test"});
         state.destroy();
         equals(decodeHash(), '{}', "window hash created");
