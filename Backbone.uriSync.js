@@ -20,24 +20,24 @@ function uriSync(method, model, options) {
             stringify: function(data) {
                 return encodeURIComponent(JSON.stringify(data));
             }
-        };
-    var data = URI.parse() || {};
+        },
+        data = URI.parse() || {};
     switch (method) {
-        case "read": 
+        case "read":
             resp = model.id ? data[model.id] || {} : data;
             break;
         case "create":
             if (!model.id) {
-                model.set('id', guid());
+                model.set("id", guid());
             }
             resp = data[model.id] = model;
             window.location.hash = URI.stringify(data);
             break;
-        case "update": 
+        case "update":
             resp = data[model.id] = model;
             window.location.hash = URI.stringify(data);
             break;
-        case "delete": 
+        case "delete":
             delete data[model.id];
             window.location.hash = URI.stringify(data);
             break;
