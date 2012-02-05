@@ -8,7 +8,8 @@ function uriSync(method, model, options) {
         },
         URI = {
             parse: function(){
-                var json = decodeURIComponent(window.location.hash).replace("#", ''),
+                var hash = window.location.href.split("#")[1] || "",
+                    json = decodeURIComponent(hash),
                     data = {};
                 try {
                     data = json ? JSON.parse(json) : {};
