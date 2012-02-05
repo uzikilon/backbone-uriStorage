@@ -5,10 +5,9 @@ As the name implies, it uses the URI as the data storage and is ideal for implem
 The adapter saves the data in a JSON string, allowing us to restore primitive variable types later.
 
 Usage
--------
 ``` javascript
 var State = Backbone.Model.extend({
-    sync: uriSync,
+    sync: uriSync
 });
 
 var state = new State({id: "test"});
