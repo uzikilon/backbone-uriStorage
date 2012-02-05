@@ -7,7 +7,7 @@ function uriSync(method, model, options) {
             return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
         },
         URI = {
-            parse: function(){
+            parse: function() {
                 var hash = window.location.href.split("#")[1] || "",
                     json = decodeURIComponent(hash),
                     data = {};
