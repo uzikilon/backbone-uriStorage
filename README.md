@@ -28,15 +28,9 @@ state.save(); // window.location.hash is #{"test"%3A{"id"%3A"test"%2C"foo"%3A"ba
 state.set("num", 17.2);
 state.save(); // window.location.hash is #{"test"%3A{"id"%3A"test"%2C"foo"%3A"bar"%2C"bool"%3Atrue%2C"num"%3A17.2}}
 
-state = new State({id: "test"}); // an empty instance of state.
-// state.get("foo") is undefined'
-// state.get("bool") is undefined'
-// state.get("num") is undefined'
+state = new State({id: "test"}); // state.get("foo") === undefined, state.get("bool") === undefined, state.get("num") === undefined
 
-state.fetch();
-// state.get("foo") === 'bar'
-// state.get("bool") === true 
-// state.get("num") === 17.2
+state.fetch(); // state.get("foo") === 'bar', state.get("bool") === true, state.get("num") === 17.2
 
 state.destroy(); // window.location.hash is '#{}'
 ```
