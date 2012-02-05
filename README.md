@@ -30,9 +30,9 @@ assert(typeof state.get("bool") === 'undefined') // true
 assert(typeof state.get("num") === 'undefined') // true
 
 state.fetch();
-assert(typeof state.get("foo") === 'string') // true
-assert(typeof state.get("bool") === 'boolean') // true
-assert(typeof state.get("num") === 'number') // true
+assert(state.get("foo") === 'bar') // true
+assert(state.get("bool") === true) // true
+assert(state.get("num") === 17.2) // true
 
 state.destroy();
 assert(window.location.hash === '#{}'); // true
