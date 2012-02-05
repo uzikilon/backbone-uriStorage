@@ -1,5 +1,14 @@
+
 $(document).ready(function(){
 
+    function decodeHash() {
+        try {
+            return decodeURIComponent(window.location.hash.substr(1));
+        } catch(e) {
+            return {};
+        }
+    }
+    
     var State = Backbone.Model.extend({
         sync: uriSync
     });
@@ -10,7 +19,7 @@ $(document).ready(function(){
         state.set("bool", true);
         state.set("num", 17.2);
         state.save();
-        equals(decodeURIComponent(window.location.hash.substr(1)), '{"test":{"id":"test","foo":"bar","bool":true,"num":17.2}}', "window hash created");
+        equals(decodeHash(), '{"test":{"id":"test","foo":"bar","bool":true,"num":17.2}}', "window hash created");
     });
     
     test("Test READ", function() {
@@ -27,12 +36,12 @@ $(document).ready(function(){
         state.fetch();
         state.set('bool', false);
         state.save();
-        equals(decodeURIComponent(window.location.hash.substr(1)), '{"test":{"id":"test","foo":"bar","bool":false,"num":17.2}}', "window hash created");
+        equals(decodeHash(), '{"test":{"id":"test","foo":"bar","bool":false,"num":17.2}}', "window hash created");
     });
     
     test("Test DESTROY", function() {
         var state = new State({id: "test"});
         state.destroy();
-        equals(decodeURIComponent(window.location.hash.substr(1)), '{}', "window hash created");
+        equals(decodeHash(), '{}', "window hash created");
     });
 });
