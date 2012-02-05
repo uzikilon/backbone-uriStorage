@@ -13,22 +13,27 @@ var State = Backbone.Model.extend({
 
 var state = new State({id: "test"});
 state.set("foo", "bar");
-state.save(); // URI IS http://example.com/path?query#{"test"%3A{"id"%3A"test"%2C"foo"%3A"bar"}}
+state.save();
+assert(window.location.hash === '#{"test"%3A{"id"%3A"test"%2C"foo"%3A"bar"}}'); // true
 
 state.set("bool", true);
-state.save(); // URI hash is now #{"test"%3A{"id"%3A"test"%2C"foo"%3A"bar"%2C"bool"%3Atrue}}
+state.save();
+assert(window.location.hash === '#{"test"%3A{"id"%3A"test"%2C"foo"%3A"bar"%2C"bool"%3Atrue}}'); // true
 
 state.set("num", 17.2);
-state.save(); // URI hash is now #{"test"%3A{"id"%3A"test"%2C"foo"%3A"bar"%2C"bool"%3Atrue%2C"num"%3A17.2}}
+state.save();
+assert(window.location.hash === '#{"test"%3A{"id"%3A"test"%2C"foo"%3A"bar"%2C"bool"%3Atrue%2C"num"%3A17.2}}'); // true
 
 state = new State({id: "test"}); // an empty instance of state.
-state.fetch();  // state model toJSON is now {"id":"test","foo":"bar","bool":true,"num":17.2}
+assert(typeof state.get("foo") === 'undefined') // true
+assert(typeof state.get("bool") === 'undefined') // true
+assert(typeof state.get("num") === 'undefined') // true
 
-/*
-typeof state.get("foo"); // string
-typeof state.get("bool"); // boolean
-typeof state.get("num"); // number
-*/
+state.fetch();
+assert(typeof state.get("foo") === 'string') // true
+assert(typeof state.get("bool") === 'boolean') // true
+assert(typeof state.get("num") === 'number') // true
 
-state.destroy(); // URI has is now #{}
+state.destroy();
+assert(window.location.hash === '#{}'); // true
 ```
