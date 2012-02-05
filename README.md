@@ -20,7 +20,7 @@ var State = Backbone.Model.extend({
 
 var state = new State({id: "test"});
 state.set("foo", "bar");
-state.save();
+state.save(); // window.location.hash is #{"test"%3A{"id"%3A"test"%2C"foo"%3A"bar"}}
 
 state.set("bool", true);
 state.save(); // window.location.hash is #{"test"%3A{"id"%3A"test"%2C"foo"%3A"bar"%2C"bool"%3Atrue}}
