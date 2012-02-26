@@ -18,6 +18,6 @@ var State = Backbone.Model.extend({
 var state = new State({id: 'state'});
 // optional - bind to changes made on the URI and auto update the model
 $(window).on("hashchange", function(){
-  state();
+  state.fetch();
 });
 ```
