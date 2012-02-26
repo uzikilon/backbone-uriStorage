@@ -1,36 +1,25 @@
 Backbone URI Storage
 ----------
-Backbone URI Storage is a sync adapter for Backbone.js.
+Backbone URI Storage is a sync adapter for Backbone.js, inspired by https://github.com/jeromegn/Backbone.localStorage
 As the name implies, it uses the URI for data storage and therefore is ideal for implementing a model representing an application state.
 The adapter saves the data in a JSON string, allowing the model to restore primitive variable types later.
+
+Background:
+-------
+http://kilon.org/blog/2012/02/backbone-uri-adapter/
+
+Demo:
+______
+http://kilon.org/samples/backbone-uriStorage.html
 
 Usage:
 -------
 ``` javascript
 var State = Backbone.Model.extend({
-    sync: uriSync
-    // optional - bind to changes made on the URI and auto update the model
-    , initialize: function(){
-        var self = this;
-        $(window).on("hashchange", function(){
-            self.fetch();
-        });
-    }
+  sync: uriSync
 });
-
-var state = new State({id: "test"});
-state.set("foo", "bar");
-state.save(); // window.location.hash is #{"test"%3A{"id"%3A"test"%2C"foo"%3A"bar"}}
-
-state.set("bool", true);
-state.save(); // window.location.hash is #{"test"%3A{"id"%3A"test"%2C"foo"%3A"bar"%2C"bool"%3Atrue}}
-
-state.set("num", 17.2);
-state.save(); // window.location.hash is #{"test"%3A{"id"%3A"test"%2C"foo"%3A"bar"%2C"bool"%3Atrue%2C"num"%3A17.2}}
-
-state = new State({id: "test"}); // state.get("foo") === undefined, state.get("bool") === undefined, state.get("num") === undefined
-
-state.fetch(); // state.get("foo") === 'bar', state.get("bool") === true, state.get("num") === 17.2
-
-state.destroy(); // window.location.hash is '#{}'
+// optional - bind to changes made on the URI and auto update the model
+$(window).on("hashchange", function(){
+  self.fetch();
+});
 ```
