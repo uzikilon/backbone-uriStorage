@@ -1,4 +1,4 @@
-!function(){
+!function(root){
     
     function S4(){
         return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
@@ -24,7 +24,7 @@
         }
     };
     
-    this.uriSync = function(method, model, options) {
+    root.uriSync = function(method, model, options) {
         var resp = null,
             data = URI.parse() || {};
         switch (method) {
@@ -33,7 +33,7 @@
                 break;
             case "create":
                 if (!model.id) {
-                    model.set("id", guid());
+                    model.set(model.idAttribute, guid());
                 }
                 resp = data[model.id] = model;
                 window.location.hash = URI.stringify(data);
@@ -54,5 +54,4 @@
         }
     };
     
-}();
-
+}(this);
