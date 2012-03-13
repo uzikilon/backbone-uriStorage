@@ -1,6 +1,6 @@
 Backbone URI Storage
 ----------
-Backbone URI Storage is a sync adapter for Backbone.js, inspired by <a href="https://github.com/jeromegn/Backbone.localStorage">Backbone.localStorage</a>.
+Backbone URI Storage is a sync adaptor for Backbone.js, inspired by <a href="https://github.com/jeromegn/Backbone.localStorage">Backbone.localStorage</a>.
 
 As the name implies, it uses the URI for data storage engine, and therefore is ideal for implementing a model representing an application state or a state machine.
 The adapter saves the data in a JSON string, allowing the model to restore primitive variable types later.
